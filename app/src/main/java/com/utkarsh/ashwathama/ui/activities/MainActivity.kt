@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding =
-            DataBindingUtil.setContentView(this, com.utkarsh.ashwathama.R.layout.activity_main)
+        mBinding = DataBindingUtil.setContentView(this, com.utkarsh.ashwathama.R.layout.activity_main)
 
         val userDetailsPref = getSharedPreferences("UserLoginDetails", MODE_PRIVATE)
         var userId = userDetailsPref.getInt("usermstId", 0)
@@ -40,6 +39,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clickListener() {
+
+        mBinding.clDeviceDetails.setOnClickListener {
+            val intent = Intent(this@MainActivity, DeviceDetailsActivity::class.java)
+            startActivity(intent)
+        }
 
         mBinding.deviceCallLogs.setOnClickListener {
             val intent = Intent(this@MainActivity, CallLogsActivity::class.java)

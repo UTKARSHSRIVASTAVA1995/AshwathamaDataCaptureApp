@@ -1,6 +1,7 @@
 package com.utkarsh.ashwathama.data.repository
 
 import IResult
+import com.utkarsh.ashwathama.data.models.DeviceDetailsResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import com.utkarsh.ashwathama.network.api.MainActivityApi
 import kotlinx.coroutines.Dispatchers
@@ -44,17 +45,16 @@ class MainActivityRepository @Inject constructor(
         }
     }
 
-    fun getDeviceDetailsInfo(userId: String, passWord: String): Flow<IResult<LoginResponseModel?>> {
+    fun getDeviceDetailsInfo(userId: String): Flow<IResult<DeviceDetailsResponseModel?>> {
         return flow {
-            emit(getDeviceDetailsInfoApi(userId, passWord))
+            emit(getDeviceDetailsInfoApi(userId))
         }.flowOn(Dispatchers.IO)
     }
 
     private suspend fun getDeviceDetailsInfoApi(
-        userId: String,
-        passWord: String
-    ): IResult<LoginResponseModel?> {
-        val result = api.getDeviceDetails(userId, passWord)
+        userId: String
+    ): IResult<DeviceDetailsResponseModel?> {
+        val result = api.getDeviceDetails(userId)
         return when (result.status) {
             IResult.Status.SUCCESS -> {
 
