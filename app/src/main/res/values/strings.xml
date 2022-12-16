@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Aswathama</string>
+    <string name="returned_from_app_settings_to_activity">
+        Returned from app settings to MainActivity with the following permissions:
+        \n\nCamera: %s
+        \nLocation: %s
+        \nSMS: %s
+        \nContacts: %s
+    </string>
+</resources>
