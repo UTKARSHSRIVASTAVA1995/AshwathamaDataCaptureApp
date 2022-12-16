@@ -37,21 +37,25 @@
             android:name="com.utkarsh.ashwathama.ui.activities.LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="locked"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name="com.utkarsh.ashwathama.ui.activities.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="locked"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name="com.utkarsh.ashwathama.ui.activities.CallLogsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="locked"
-            android:windowSoftInputMode="adjustResize"></activity>
-    </application>
+            android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name="com.utkarsh.ashwathama.ui.activities.DeviceDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+    </application>
 
 </manifest>
