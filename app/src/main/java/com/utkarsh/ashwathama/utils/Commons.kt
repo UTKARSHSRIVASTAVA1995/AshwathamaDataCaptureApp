@@ -1,6 +1,5 @@
 import android.util.Log
 import com.google.gson.Gson
-import org.json.JSONArray
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
@@ -39,8 +38,9 @@ suspend fun <T> handleApiResponse(
                 200 -> {
                     val gson = Gson()
                     gson.toJson(response.body())
-                   // val apiResponseJsonObject = JSONArray(apiResponseJsonString)
-                    //Log.e("apiResponseJsonObject", "!!!!$apiResponseJsonObject")
+                    val apiResponseJsonString = gson.toJson(response.body())
+                   //    val apiResponseJsonObject = JSONArray(apiResponseJsonString)
+                    //   Log.e("apiResponseJsonObject", "!!!!$apiResponseJsonObject")
 
                     IResult.success(response.body())
                 }

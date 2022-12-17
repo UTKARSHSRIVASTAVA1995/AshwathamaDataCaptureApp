@@ -1,5 +1,6 @@
 package com.utkarsh.ashwathama.network.interfaces
 
+import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
 import com.utkarsh.ashwathama.data.models.DeviceDetailsResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import retrofit2.Response
@@ -12,6 +13,6 @@ interface MainActivityInterface {
     suspend fun getUserLogin(@Path("user_Id") userId: String, @Path("user_pwd") passWord: String): Response<LoginResponseModel>
 
     @GET("GetCustmst/{user_Id}")
-    suspend fun getDeviceDetails(@Path("user_Id") userId: String): Response<DeviceDetailsResponseModel>
+    suspend fun getDeviceDetails(@Path("user_Id") userId: String): Response<DeviceDetailsListResponseModel>
 
 }

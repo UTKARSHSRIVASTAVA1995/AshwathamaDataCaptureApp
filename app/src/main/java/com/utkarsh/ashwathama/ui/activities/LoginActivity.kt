@@ -28,9 +28,9 @@ class LoginActivity : AppCompatActivity() {
         //Calling Method here to successfully Login
         mBinding.btnLogin.setOnClickListener {
 
-            if (mBinding.etMail.text.isNullOrEmpty() && mBinding.etPassword.text.isNullOrEmpty()){
-                Toast.makeText(this,"Enter Email Id & Password", Toast.LENGTH_SHORT).show()
-            }else{
+            if (mBinding.etMail.text.isNullOrEmpty() && mBinding.etPassword.text.isNullOrEmpty()) {
+                Toast.makeText(this, "Enter Email Id & Password", Toast.LENGTH_SHORT).show()
+            } else {
                 mBinding.pbLogin.visibility = View.VISIBLE
                 getUserLogin()
             }
@@ -47,13 +47,18 @@ class LoginActivity : AppCompatActivity() {
                 when (result.status) {
                     IResult.Status.SUCCESS -> {
 
-                        if (result.data?.usermstName.equals(null)){
-                            Toast.makeText(this,"Enter Correct Login Credentials", Toast.LENGTH_SHORT).show()
+                        if (result.data?.usermstName.equals(null)) {
+                            Toast.makeText(
+                                this,
+                                "Enter Correct Login Credentials",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             mBinding.pbLogin.visibility = View.GONE
-                        } else{
+                        } else {
                             mBinding.pbLogin.visibility = View.GONE
                             Log.d(ContentValues.TAG, "Success: ${result.data}")
-                            val sharedPreferences = getSharedPreferences("UserLoginDetails", MODE_PRIVATE)
+                            val sharedPreferences =
+                                getSharedPreferences("UserLoginDetails", MODE_PRIVATE)
                             val userDetailsPref = sharedPreferences.edit()
                             result.data?.usermstId?.let { userDetailsPref.putInt("usermstId", it) }
                             userDetailsPref.putString("usermstName", result.data?.usermstName)
@@ -61,9 +66,9 @@ class LoginActivity : AppCompatActivity() {
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
-                            Toast.makeText(this,"Successfully Logged in", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Successfully Logged in", Toast.LENGTH_SHORT)
+                                .show()
                         }
-
 
                     }
                     IResult.Status.ERROR -> {

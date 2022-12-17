@@ -1,7 +1,7 @@
 package com.utkarsh.ashwathama.network.api
 
 import IResult
-import com.utkarsh.ashwathama.data.models.DeviceDetailsResponseModel
+import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import com.utkarsh.ashwathama.network.NetworkService
 import com.utkarsh.ashwathama.network.interfaces.MainActivityInterface
@@ -17,7 +17,7 @@ class MainActivityApi @Inject constructor(
     }
 
 
-    suspend fun getDeviceDetails(userId: String): IResult<DeviceDetailsResponseModel?> {
+    suspend fun getDeviceDetails(userId: String): IResult<DeviceDetailsListResponseModel?> {
         val getDeviceDetailsService = networkService.build(MainActivityInterface::class.java)
         return handleApiResponse(request = { getDeviceDetailsService.getDeviceDetails(userId) })
     }

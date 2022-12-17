@@ -4,6 +4,7 @@ import IResult
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
 import com.utkarsh.ashwathama.data.models.DeviceDetailsResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import com.utkarsh.ashwathama.data.repository.MainActivityRepository
@@ -16,7 +17,7 @@ class MainActivityViewModel @Inject constructor(
     private val mainActivityRepository: MainActivityRepository,
 ) : ViewModel() {
     lateinit var userLogin: LiveData<IResult<LoginResponseModel?>>
-    lateinit var deviceDetails: LiveData<IResult<DeviceDetailsResponseModel?>>
+    lateinit var deviceDetails: LiveData<IResult<DeviceDetailsListResponseModel?>>
 
     fun getUserLogin(userId: String, passWord: String): LiveData<IResult<LoginResponseModel?>> {
         userLogin = mainActivityRepository.getUserLoginInfo(userId, passWord)
@@ -25,11 +26,11 @@ class MainActivityViewModel @Inject constructor(
         return userLogin
     }
 
-    fun getDeviceDetailsLogin(userId: String): LiveData<IResult<DeviceDetailsResponseModel?>> {
-        deviceDetails = mainActivityRepository.getDeviceDetailsInfo(userId)
+    fun getDeviceDetailsLogin(userId: String): LiveData<IResult<DeviceDetailsListResponseModel?>> {
+      return  mainActivityRepository.getDeviceDetailsInfo(userId)
             .onStart { emit(IResult.loading()) }
-            .asLiveData()
-        return deviceDetails
+            .asLiveData() as LiveData<IResult<DeviceDetailsListResponseModel?>>
+
     }
 
 }

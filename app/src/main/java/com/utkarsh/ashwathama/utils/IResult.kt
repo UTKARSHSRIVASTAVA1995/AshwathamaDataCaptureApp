@@ -24,6 +24,7 @@ data class IResult<T>(val status: Status, val data: T, val error: Error?, val me
         fun <T> loading(data: T? = null): IResult<T?> {
             return IResult(Status.LOADING, data, null, null)
         }
+
     }
     override fun toString(): String {
         return "Result(status=$status, data=$data, error=$error, message=$message)"
