@@ -40,6 +40,12 @@
             android:screenOrientation="locked"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name="com.utkarsh.ashwathama.ui.activities.ChangePasswordActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="locked"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name="com.utkarsh.ashwathama.ui.activities.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="locked"

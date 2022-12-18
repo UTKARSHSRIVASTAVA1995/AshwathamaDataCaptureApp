@@ -31,7 +31,7 @@ class ContactsActivity : AppCompatActivity() {
         val userDetailsPref = getSharedPreferences("UserLoginDetails", MODE_PRIVATE)
         var userId = userDetailsPref.getInt("usermstId", 0)
 
-        //Calling Device Details Api Method Below
+        //Calling Contacts Api Method Below
         getDeviceContacts(userId.toString())
     }
 

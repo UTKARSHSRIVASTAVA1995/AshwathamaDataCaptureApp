@@ -40,12 +40,10 @@ class DeviceLocationListAdapter : RecyclerView.Adapter<DeviceLocationListAdapter
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val locationId = view.findViewById(R.id.custlocationId) as TextView
         private val deviceid = view.findViewById(R.id.custmstDeviceid) as TextView
-        private val name = view.findViewById(R.id.custmstName) as TextView
         private val locationLatitude = view.findViewById(R.id.custlocationLatitude) as TextView
         private val locationLongitude = view.findViewById(R.id.custlocationLongitude) as TextView
 
         fun bind(deviceCallLogs: DeviceLocationResponseModelItem, position: Int) {
-            name.text = "Name = " + deviceCallLogs.custmstName
             deviceid.text = "IMEI = " + deviceCallLogs.custmstDeviceid
             locationId.text = "IMEI = " + deviceCallLogs.custlocationId
             locationLatitude.text = "IMEI = " + deviceCallLogs.custlocationLatitude

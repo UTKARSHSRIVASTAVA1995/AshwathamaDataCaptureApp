@@ -41,6 +41,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun clickListener() {
 
+        mBinding.editProfileB.setOnClickListener {
+            val intent = Intent(this@MainActivity, ChangePasswordActivity::class.java)
+            startActivity(intent)
+        }
+
         mBinding.clDeviceDetails.setOnClickListener {
             val intent = Intent(this@MainActivity, DeviceDetailsActivity::class.java)
             startActivity(intent)

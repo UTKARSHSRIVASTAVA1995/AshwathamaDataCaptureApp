@@ -38,16 +38,13 @@ class DeviceContactsAdapter : RecyclerView.Adapter<DeviceContactsAdapter.ViewHol
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val custmstName = view.findViewById(R.id.custmstNameContacts) as TextView
         private val custcontactNumber = view.findViewById(R.id.custcontactNumberss) as TextView
         private val custcontactName = view.findViewById(R.id.custcontactNamee) as TextView
 
 
         fun bind(deviceSmSLogs: DeviceContactsResponseModelItem, position: Int) {
-            custmstName.text = "Name = " + deviceSmSLogs.custmstName
-            custcontactNumber.text = "SMS = " + deviceSmSLogs.custcontactNumber
-            custcontactName.text = "SMS = " + deviceSmSLogs.custcontactName
-
+            custcontactNumber.text = "Name = " + deviceSmSLogs.custcontactNumber
+            custcontactName.text = "Number = " + deviceSmSLogs.custcontactName
 
         }
     }

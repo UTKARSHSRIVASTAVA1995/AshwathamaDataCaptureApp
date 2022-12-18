@@ -31,7 +31,7 @@ class LocationActivity : AppCompatActivity() {
         val userDetailsPref = getSharedPreferences("UserLoginDetails", MODE_PRIVATE)
         var userId = userDetailsPref.getInt("usermstId", 0)
 
-        //Calling Device Details Api Method Below
+        //Calling Device Location Api Method Below
         getDeviceLocation(userId.toString())
     }
 
