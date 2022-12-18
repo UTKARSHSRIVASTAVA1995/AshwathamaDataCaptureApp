@@ -1,9 +1,7 @@
 package com.utkarsh.ashwathama.data.repository
 
 import IResult
-import com.utkarsh.ashwathama.data.models.DeviceCallLogsResponseModel
-import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
-import com.utkarsh.ashwathama.data.models.LoginResponseModel
+import com.utkarsh.ashwathama.data.models.*
 import com.utkarsh.ashwathama.network.api.MainActivityApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -84,6 +82,90 @@ class MainActivityRepository @Inject constructor(
         userId: String
     ): IResult<DeviceCallLogsResponseModel?> {
         val result = api.getDeviceCallLogs(userId)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addDeviceCallLogsInfo = result.data
+                if (addDeviceCallLogsInfo != null) {
+                    withContext(Dispatchers.IO) {
+
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
+    fun getDeviceLocationInfo(userId: String): Flow<IResult<DeviceLocationResponseModel?>> {
+        return flow {
+            emit(getDeviceLocationInfoApi(userId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun getDeviceLocationInfoApi(
+        userId: String
+    ): IResult<DeviceLocationResponseModel?> {
+        val result = api.getDeviceLocation(userId)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addDeviceCallLogsInfo = result.data
+                if (addDeviceCallLogsInfo != null) {
+                    withContext(Dispatchers.IO) {
+
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
+    fun getDeviceSmSInfo(userId: String): Flow<IResult<DeviceSmSResponseModel?>> {
+        return flow {
+            emit(getDeviceSmSInfoApi(userId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun getDeviceSmSInfoApi(
+        userId: String
+    ): IResult<DeviceSmSResponseModel?> {
+        val result = api.getDeviceSmS(userId)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addDeviceCallLogsInfo = result.data
+                if (addDeviceCallLogsInfo != null) {
+                    withContext(Dispatchers.IO) {
+
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
+    fun getDeviceContactsInfo(userId: String): Flow<IResult<DeviceContactsResponseModel?>> {
+        return flow {
+            emit(getDeviceContactsInfoApi(userId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun getDeviceContactsInfoApi(
+        userId: String
+    ): IResult<DeviceContactsResponseModel?> {
+        val result = api.getDeviceContacts(userId)
         return when (result.status) {
             IResult.Status.SUCCESS -> {
 

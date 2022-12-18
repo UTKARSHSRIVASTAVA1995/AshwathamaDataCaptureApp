@@ -2,6 +2,9 @@
     <string name="app_name">Aswathama</string>
     <string name="device_details">Device Details</string>
     <string name="device_call_logs">Device Call Logs</string>
+    <string name="device_Location">Device Location</string>
+    <string name="device_sms">Device SMS</string>
+    <string name="device_contacts">Device Contacts</string>
     <string name="returned_from_app_settings_to_activity">
         Returned from app settings to MainActivity with the following permissions:
         \n\nCamera: %s
