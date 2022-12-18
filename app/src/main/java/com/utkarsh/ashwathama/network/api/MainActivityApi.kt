@@ -1,6 +1,7 @@
 package com.utkarsh.ashwathama.network.api
 
 import IResult
+import com.utkarsh.ashwathama.data.models.DeviceCallLogsResponseModel
 import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import com.utkarsh.ashwathama.network.NetworkService
@@ -20,6 +21,11 @@ class MainActivityApi @Inject constructor(
     suspend fun getDeviceDetails(userId: String): IResult<DeviceDetailsListResponseModel?> {
         val getDeviceDetailsService = networkService.build(MainActivityInterface::class.java)
         return handleApiResponse(request = { getDeviceDetailsService.getDeviceDetails(userId) })
+    }
+
+    suspend fun getDeviceCallLogs(userId: String): IResult<DeviceCallLogsResponseModel?> {
+        val getDeviceCallLogsService = networkService.build(MainActivityInterface::class.java)
+        return handleApiResponse(request = { getDeviceCallLogsService.getDeviceCallLogs(userId) })
     }
 
 }

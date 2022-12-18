@@ -1,6 +1,7 @@
 package com.utkarsh.ashwathama.data.repository
 
 import IResult
+import com.utkarsh.ashwathama.data.models.DeviceCallLogsResponseModel
 import com.utkarsh.ashwathama.data.models.DeviceDetailsListResponseModel
 import com.utkarsh.ashwathama.data.models.LoginResponseModel
 import com.utkarsh.ashwathama.network.api.MainActivityApi
@@ -60,6 +61,34 @@ class MainActivityRepository @Inject constructor(
 
                 val addDeviceDetailsInfo = result.data
                 if (addDeviceDetailsInfo != null) {
+                    withContext(Dispatchers.IO) {
+
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
+    fun getDeviceCallLogsInfo(userId: String): Flow<IResult<DeviceCallLogsResponseModel?>> {
+        return flow {
+            emit(getDeviceCallLogsInfoApi(userId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun getDeviceCallLogsInfoApi(
+        userId: String
+    ): IResult<DeviceCallLogsResponseModel?> {
+        val result = api.getDeviceCallLogs(userId)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addDeviceCallLogsInfo = result.data
+                if (addDeviceCallLogsInfo != null) {
                     withContext(Dispatchers.IO) {
 
                     }
