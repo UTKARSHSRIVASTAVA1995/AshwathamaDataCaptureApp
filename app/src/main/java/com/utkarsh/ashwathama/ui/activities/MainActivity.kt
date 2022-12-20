@@ -70,6 +70,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SmSActivity::class.java)
             startActivity(intent)
         }
+
+        mBinding.deviceApps.setOnClickListener {
+            val intent = Intent(this@MainActivity, AppInstalledActivity::class.java)
+            startActivity(intent)
+        }
         mBinding.btnLogout.setOnClickListener {
 
             val builder = AlertDialog.Builder(this)

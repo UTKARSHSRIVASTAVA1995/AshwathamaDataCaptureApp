@@ -5,6 +5,7 @@
     <string name="device_Location">Device Location</string>
     <string name="device_sms">Device SMS</string>
     <string name="device_contacts">Device Contacts</string>
+    <string name="device_apps">Device Apps Installed</string>
     <string name="change_Password">Change Password</string>
     <string name="returned_from_app_settings_to_activity">
         Returned from app settings to MainActivity with the following permissions:

@@ -14,6 +14,33 @@ class MainActivityRepository @Inject constructor(
     private val api: MainActivityApi
 ) {
 
+    // Change User Password Api Below
+    fun changePasswordInfo(changePasswordModel: ChangePasswordModel): Flow<IResult<Boolean?>> {
+        return flow {
+            emit(changePasswordInfoApi(changePasswordModel))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun changePasswordInfoApi(changePasswordModel: ChangePasswordModel): IResult<Boolean?> {
+        val result = api.changePassword(changePasswordModel)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addNewUserInfo = result.data
+                if (addNewUserInfo != null) {
+                    withContext(Dispatchers.IO) {
+                        //  customersDAO.insertOrUpdateAddNewCustomerInfo(addNewCustomer)
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
     // Get User Details Api Below
     fun getUserLoginInfo(userId: String, passWord: String): Flow<IResult<LoginResponseModel?>> {
         return flow {
@@ -166,6 +193,34 @@ class MainActivityRepository @Inject constructor(
         userId: String
     ): IResult<DeviceContactsResponseModel?> {
         val result = api.getDeviceContacts(userId)
+        return when (result.status) {
+            IResult.Status.SUCCESS -> {
+
+                val addDeviceCallLogsInfo = result.data
+                if (addDeviceCallLogsInfo != null) {
+                    withContext(Dispatchers.IO) {
+
+                    }
+                }
+                result
+            }
+            IResult.Status.ERROR -> {
+                IResult.response(result.message.toString())
+            }
+            else -> IResult.response(result.message.toString())
+        }
+    }
+
+    fun getDeviceAppsInfo(userId: String): Flow<IResult<DeviceAppsResponseModel?>> {
+        return flow {
+            emit(getDeviceAppsInfoApi(userId))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun getDeviceAppsInfoApi(
+        userId: String
+    ): IResult<DeviceAppsResponseModel?> {
+        val result = api.getDeviceApps(userId)
         return when (result.status) {
             IResult.Status.SUCCESS -> {
 

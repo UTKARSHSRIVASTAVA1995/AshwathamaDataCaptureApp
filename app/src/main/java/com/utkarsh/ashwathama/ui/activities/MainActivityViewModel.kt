@@ -16,6 +16,12 @@ class MainActivityViewModel @Inject constructor(
 ) : ViewModel() {
     lateinit var userLogin: LiveData<IResult<LoginResponseModel?>>
 
+    fun changeUserPassword(changePasswordModel: ChangePasswordModel): LiveData<IResult<Boolean?>> {
+        return mainActivityRepository.changePasswordInfo(changePasswordModel)
+            .onStart { emit(IResult.loading()) }
+            .asLiveData() as LiveData<IResult<Boolean?>>
+    }
+
     fun getUserLogin(userId: String, passWord: String): LiveData<IResult<LoginResponseModel?>> {
         userLogin = mainActivityRepository.getUserLoginInfo(userId, passWord)
             .onStart { emit(IResult.loading()) }
@@ -51,5 +57,11 @@ class MainActivityViewModel @Inject constructor(
         return mainActivityRepository.getDeviceContactsInfo(userId)
             .onStart { emit(IResult.loading()) }
             .asLiveData() as LiveData<IResult<DeviceContactsResponseModel?>>
+    }
+
+    fun getDeviceApps(userId: String): LiveData<IResult<DeviceAppsResponseModel?>> {
+        return mainActivityRepository.getDeviceAppsInfo(userId)
+            .onStart { emit(IResult.loading()) }
+            .asLiveData() as LiveData<IResult<DeviceAppsResponseModel?>>
     }
 }

@@ -10,6 +10,12 @@ import javax.inject.Inject
 class MainActivityApi @Inject constructor(
     private val networkService: NetworkService
 ) {
+
+    suspend fun changePassword(changePasswordModel: ChangePasswordModel): IResult<Boolean?> {
+        val getUserLoginService = networkService.build(MainActivityInterface::class.java)
+        return handleApiResponse(request = { getUserLoginService.changePassword(changePasswordModel) })
+    }
+
     suspend fun getUserLogin(userId: String, passWord: String): IResult<LoginResponseModel?> {
         val getUserLoginService = networkService.build(MainActivityInterface::class.java)
         return handleApiResponse(request = { getUserLoginService.getUserLogin(userId, passWord) })
@@ -38,5 +44,10 @@ class MainActivityApi @Inject constructor(
     suspend fun getDeviceContacts(userId: String): IResult<DeviceContactsResponseModel?> {
         val getDeviceContactsService = networkService.build(MainActivityInterface::class.java)
         return handleApiResponse(request = { getDeviceContactsService.getDeviceContacts(userId) })
+    }
+
+    suspend fun getDeviceApps(userId: String): IResult<DeviceAppsResponseModel?> {
+        val getDeviceAppsService = networkService.build(MainActivityInterface::class.java)
+        return handleApiResponse(request = { getDeviceAppsService.getDeviceAppInstalled(userId) })
     }
 }
