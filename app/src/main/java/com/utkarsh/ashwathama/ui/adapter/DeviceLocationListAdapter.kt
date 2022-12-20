@@ -45,9 +45,9 @@ class DeviceLocationListAdapter : RecyclerView.Adapter<DeviceLocationListAdapter
 
         fun bind(deviceCallLogs: DeviceLocationResponseModelItem, position: Int) {
             deviceid.text = "IMEI = " + deviceCallLogs.custmstDeviceid
-            locationId.text = "IMEI = " + deviceCallLogs.custlocationId
-            locationLatitude.text = "IMEI = " + deviceCallLogs.custlocationLatitude
-            locationLongitude.text = "IMEI = " + deviceCallLogs.custlocationLongitude
+            locationId.text = "Location Id = " + deviceCallLogs.custlocationId
+            locationLatitude.text = "Latitude = " + deviceCallLogs.custlocationLatitude
+            locationLongitude.text = "Longitude = " + deviceCallLogs.custlocationLongitude
 
 
         }
