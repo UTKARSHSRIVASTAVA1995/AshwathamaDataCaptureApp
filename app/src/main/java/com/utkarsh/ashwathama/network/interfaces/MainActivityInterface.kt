@@ -30,7 +30,7 @@ interface MainActivityInterface {
     @GET("GetCustContact/{user_Id}")
     suspend fun getDeviceContacts(@Path("user_Id") userId: String): Response<DeviceContactsResponseModel>
 
-    @GET("GetCustContact/{user_Id}")
+    @GET("GetCustApp/{user_Id}")
     suspend fun getDeviceAppInstalled(@Path("user_Id") userId: String): Response<DeviceAppsResponseModel>
 
 }
